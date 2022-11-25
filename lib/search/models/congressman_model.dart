@@ -1,10 +1,11 @@
 class CongressmanModel {
-  List<int> id;
+  String id;
   String name;
   String abbreviationFederalUnit;
   String abbreviationGender;
   String abbreviationPoliticalParty;
   String startDate;
+  String urlPhoto;
 
   CongressmanModel({
     required this.id,
@@ -13,15 +14,17 @@ class CongressmanModel {
     required this.abbreviationGender,
     required this.abbreviationPoliticalParty,
     required this.startDate,
+    required this.urlPhoto,
   });
 
   CongressmanModel copyWith({
-    List<int>? id,
+    String? id,
     String? name,
     String? abbreviationFederalUnit,
     String? abbreviationGender,
     String? abbreviationPoliticalParty,
     String? startDate,
+    String? urlPhoto,
   }) {
     return CongressmanModel(
       id: id ?? this.id,
@@ -32,6 +35,7 @@ class CongressmanModel {
       abbreviationPoliticalParty:
           abbreviationPoliticalParty ?? this.abbreviationPoliticalParty,
       startDate: startDate ?? this.startDate,
+      urlPhoto: urlPhoto ?? this.urlPhoto,
     );
   }
 }

@@ -2,34 +2,39 @@ import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
+    required this.congressmanName,
+    required this.congressmanPoliticalParty,
+    required this.congressmanPhotoUrl,
     required this.onPressed,
-    required this.title,
-    required this.subtitle,
     super.key,
   });
 
   final void Function()? onPressed;
-  final String title;
-  final String subtitle;
+  final String congressmanName;
+  final String congressmanPoliticalParty;
+  final String congressmanPhotoUrl;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         title: Text(
-          title,
+          congressmanName,
           style: const TextStyle(
             color: Color.fromARGB(255, 2, 126, 95),
           ),
         ),
-        subtitle: Text(subtitle),
-        leading: const Icon(
-          Icons.person_outline_rounded,
-          size: 50,
+        subtitle: Text(congressmanPoliticalParty),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(25),
+          child: Image.network(
+            congressmanPhotoUrl,
+            fit: BoxFit.fill,
+          ),
         ),
         trailing: IconButton(
           onPressed: onPressed,
-          icon: const Icon(Icons.info_outline),
+          icon: const Icon(Icons.info_outline_rounded),
         ),
       ),
     );

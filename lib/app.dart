@@ -7,12 +7,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ThemeData()
             .colorScheme
             .copyWith(primary: const Color.fromARGB(255, 3, 170, 128)),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromARGB(255, 17, 161, 94),
+          backgroundColor: Color.fromARGB(255, 3, 170, 128),
         ),
         scaffoldBackgroundColor: Colors.grey[200],
       ),

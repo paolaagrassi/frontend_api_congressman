@@ -3,12 +3,12 @@ import 'package:frontend_api_congressman/search/core/repositories/congressman_re
 import 'package:frontend_api_congressman/search/core/wrappers/result.dart';
 import 'package:frontend_api_congressman/search/models/models.dart';
 
-abstract class CongressmanServices {
+abstract class CongressmanService {
   Future<Result<List<CongressmanModel>>> getAllCongressmans();
 }
 
-class CongressmanServicesImpl implements CongressmanServices {
-  CongressmanServicesImpl({
+class CongressmanServiceImpl implements CongressmanService {
+  CongressmanServiceImpl({
     required this.congressmanRepository,
   });
 
