@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_api_congressman/search/views/views.dart';
+import 'package:frontend_api_congressman/congressmans/views/views.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
