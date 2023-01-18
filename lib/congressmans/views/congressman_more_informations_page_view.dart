@@ -17,6 +17,9 @@ class CongressmanInfoPageView
 
   @override
   Widget build(BuildContext context) {
+    final ValueNotifier<bool> isCongressmansInformationsLoaded =
+        useState(false);
+
     final ValueNotifier<CongressmanMoreInfoModel> congressmanInformations =
         useState(
       CongressmanMoreInfoModel(
@@ -31,6 +34,7 @@ class CongressmanInfoPageView
         controller.getMoreInformation(id: congressmanModel.id).then((result) {
           if (result.isSuccess) {
             congressmanInformations.value = result.extractSuccess;
+            isCongressmansInformationsLoaded.value = true;
           }
 
           if (result.isError) {
@@ -109,35 +113,79 @@ class CongressmanInfoPageView
                         padding: const EdgeInsets.all(6.0),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height * 0.2,
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(
-                                  'Gênero: ${congressmanInformations.value.abbreviationGender}',
-                                  style: const TextStyle(
-                                    fontSize: 18,
+                          child: isCongressmansInformationsLoaded.value
+                              ? Align(
+                                  alignment: Alignment.bottomLeft,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Gênero: ',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            congressmanInformations
+                                                .value.abbreviationGender,
+                                            style: const TextStyle(
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Naturalidade: ',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            congressmanInformations
+                                                .value.birthCity,
+                                            style: const TextStyle(
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Escolaridade: ',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            congressmanInformations
+                                                .value.education,
+                                            style: const TextStyle(
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : const Align(
+                                  child: CircularProgressIndicator(
+                                    color: Color.fromARGB(255, 3, 170, 128),
                                   ),
                                 ),
-                                Text(
-                                  'Naturalidade: ${congressmanInformations.value.birthCity}',
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Text(
-                                  'Escolaridade: ${congressmanInformations.value.education}',
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
