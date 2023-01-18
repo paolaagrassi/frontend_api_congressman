@@ -1,7 +1,11 @@
 # frontend_api_congressman
-  
-  
+
+Simple Flutter application to get informations about brazilians congressmans.
 
 
-https://user-images.githubusercontent.com/101572382/204277109-2d66434b-1e79-47a5-be0e-6bb3b3ea15a9.mp4
+- MVC and Service-Repository patterns
+- Dependencies Injection with Kiwi
+- State management 
+  
+https://user-images.githubusercontent.com/101572382/213242811-ac42a5b6-c1b7-462e-98b3-b33c8babb8cd.mp4
 
